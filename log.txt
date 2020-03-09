@@ -1,0 +1,15 @@
+21:21:00:863, ***** NO MORE CUSTOMERS - THE SHOP IS CLOSED NOW. *****
+21:21:00:878, Total served orders 0
+21:21:00:879, Total takeway orders 0
+21:21:00:879, Total orders 0
+21:21:00:885, Total customers 0
+21:25:54:202, Shop closed!
+21:25:54:227, Orders served: 0
+21:25:54:228, Orders takeaway: 0
+21:25:54:230, Orders in total: 0
+21:25:54:232, Customers: 0
+21:25:55:334, Shop closed!
+21:25:55:352, Orders served: 0
+21:25:55:353, Orders takeaway: 0
+21:25:55:356, Orders in total: 0
+21:25:55:362, Customers: 0

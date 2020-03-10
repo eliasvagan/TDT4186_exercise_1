@@ -17,7 +17,6 @@ public class WaitingArea {
    */
 
   public WaitingArea(int size) {
-    // TODO Implement required functionality
     this.maxCustomers = size;
     this.waitingLine = new ArrayList<>();
   }
@@ -25,19 +24,50 @@ public class WaitingArea {
   /**
    * This method should put the customer into the waitingArea
    *
-   * @param customer A customer created by Sushibar.Door, trying to
+   * @param customer A customer created by Door, trying to
    *                 enter the waiting area
    */
   public synchronized void enter(Customer customer) {
-    // TODO Implement required functionality
+    while (true) {
+      if (this.customersInLine() < maxCustomers) {
+        waitingLine.add(customer);
+        SushiBar.write(customer + " is in line.");
+        notify(); // Waitresses know that they can take customer
+        break;
+      } else {
+        try {
+          wait(); // Door must wait
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
+    }
+
   }
 
   /**
    * @return The customer that is first in line.
    */
   public synchronized Customer next() {
-    // TODO: Implement required functionality
-    return new Customer();
+    while (true) {
+      if (this.noCustomers()) {
+        SushiBar.write("The waiting area is empty, and awaits new customers from the door.");
+        try {
+          wait(); // Waitress must wait for new customer
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      } else {
+        notify(); // Tell the door to let in more customers
+        return waitingLine.remove(0);
+      }
+    }
+  }
+  public int customersInLine() {
+    return waitingLine.size();
+  }
+  public boolean noCustomers() {
+    return this.waitingLine.size() == 0;
   }
 
   // Add more methods as you see fit

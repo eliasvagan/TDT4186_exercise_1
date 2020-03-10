@@ -6,13 +6,13 @@ package Sushibar;
  * producer/consumer problem
  */
 public class Door implements Runnable {
-
+  private WaitingArea waitingArea;
   /**
    * Creates a new Door Make sure to save the
    * @param waitingArea   The customer queue waiting for a seat
    */
   public Door(WaitingArea waitingArea) {
-    // TODO: Implement required functionality.
+    this.waitingArea = waitingArea;
   }
 
   /**
@@ -21,7 +21,17 @@ public class Door implements Runnable {
    */
   @Override
   public void run() {
-    // TODO: Implement required functionality.
+    while (SushiBar.isOpen) {
+      Customer customer = new Customer();
+      SushiBar.write(customer + " just came through the door.");
+      waitingArea.enter(customer); // New customer received in line
+      try {
+        Thread.sleep(SushiBar.doorWait); // Wait for next customer
+      } catch (Exception e) {
+        e.printStackTrace();
+      }
+    }
+    SushiBar.write("The door is finished letting people in.");
   }
 
   // Add more methods as you see fit

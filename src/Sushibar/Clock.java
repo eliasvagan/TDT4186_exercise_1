@@ -19,7 +19,7 @@ public class Clock {
   class RemindTask extends TimerTask {
     public void run() {
       // To prevent creating new customers.
-      SushiBar.isOpen = false;
+      SushiBar.closeSushiBar();
       timer.cancel();
     }
   }

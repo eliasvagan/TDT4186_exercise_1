@@ -36,6 +36,7 @@ public class WaitingArea {
         break;
       } else {
         try {
+          SushiBar.write("The waiting room is full!");
           wait(); // Door must wait
         } catch (InterruptedException e) {
           e.printStackTrace();

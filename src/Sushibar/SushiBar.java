@@ -24,9 +24,9 @@ public class SushiBar {
   private static String path = "./";
 
   // Variables related to statistics.
-  public static SynchronizedInteger servedOrders;
-  public static SynchronizedInteger takeawayOrders;
-  public static SynchronizedInteger totalOrders;
+  private static SynchronizedInteger servedOrders;
+  private static SynchronizedInteger takeawayOrders;
+  private static SynchronizedInteger totalOrders;
 
   public static void closeSushiBar() {
     SushiBar.isOpen = false;
